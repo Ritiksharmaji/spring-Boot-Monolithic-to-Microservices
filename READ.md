@@ -577,3 +577,7 @@ H2 is mostly used in **Spring Boot projects for development/testing** because it
 ---
 
 Would you like me to also prepare a **comparison table: H2 vs MySQL vs PostgreSQL** so you can clearly see when to use H2?
+
+## -------
+1) ![img.png](img.png)
+2) 

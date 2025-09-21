@@ -55,7 +55,13 @@ public class UserController {
     }
 
     @PutMapping("/api/user/{id}")
-    public ResponseEntity<User> UpdateUser(@PathVariable Long id){
+    public ResponseEntity<User> UpdateUser(@PathVariable Long id, @RequestBody User updateUser){
+        boolean updated = userService.updateUser(id, updateUser);
+        if (updated) {
+            return ResponseEntity.ok(updateUser); // return updated user
+        } else {
+            return ResponseEntity.notFound().build(); // 404 if user not found
+        }
 
     }
 
