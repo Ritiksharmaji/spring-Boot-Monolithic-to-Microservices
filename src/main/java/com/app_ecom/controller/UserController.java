@@ -1,11 +1,11 @@
-package com.app_ecom;
+package com.app_ecom.controller;
 
-import lombok.RequiredArgsConstructor;
+import com.app_ecom.dto.UserRequest;
+import com.app_ecom.dto.UserResponse;
+import com.app_ecom.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -18,8 +18,8 @@ public class UserController {
     }
 
     @GetMapping("/api/users")
-    public List<User> getUsers(){
-
+//    public List<User> getUsers(){
+    public List<UserResponse> getUsers(){
         /*
         ways to return the response
          */
@@ -30,9 +30,8 @@ public class UserController {
     }
 
     @PostMapping("/api/users")
-    public ResponseEntity<String>  createUser( @RequestBody User user){
-//        users.add(user);
-        userService.addUser(user);
+    public ResponseEntity<String>  createUser( @RequestBody UserRequest userRequest){
+        userService.addUser(userRequest);
         return ResponseEntity.ok("User Added");
     }
 
@@ -47,18 +46,18 @@ public class UserController {
 //
 //    }
     @GetMapping("/api/users/{id}")
-    public ResponseEntity<User> getUser(@PathVariable Long id){
+    public ResponseEntity<UserResponse> getUser(@PathVariable Long id){
        return userService.fetchUser(id)
                .map(ResponseEntity::ok)
                .orElseGet(()-> ResponseEntity.notFound().build());
 
     }
 
-    @PutMapping("/api/user/{id}")
-    public ResponseEntity<User> UpdateUser(@PathVariable Long id, @RequestBody User updateUser){
-        boolean updated = userService.updateUser(id, updateUser);
+    @PutMapping("/api/users/{id}")
+    public ResponseEntity<String> UpdateUser(@PathVariable Long id, @RequestBody UserRequest updateUserRequest){
+        boolean updated = userService.updateUser(id, updateUserRequest);
         if (updated) {
-            return ResponseEntity.ok(updateUser); // return updated user
+            return ResponseEntity.ok("user updated"); // return updated user
         } else {
             return ResponseEntity.notFound().build(); // 404 if user not found
         }
