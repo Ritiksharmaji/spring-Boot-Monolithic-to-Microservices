@@ -782,4 +782,5 @@ Response:
 7) ![img_4.png](img_4.png)
 8) not working on Update Product
 9) ![img_5.png](img_5.png)
-10) 
+## ----- working on getting products and product and searching product ----
+1) ![img_6.png](img_6.png)
