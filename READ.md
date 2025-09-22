@@ -784,3 +784,10 @@ Response:
 9) ![img_5.png](img_5.png)
 ## ----- working on getting products and product and searching product ----
 1) ![img_6.png](img_6.png)
+# --- Working on card ------
+1) create model/CartItem
+2) create repository/CartItemRepository
+3) create controller/CartItemController
+4) ![img_8.png](img_8.png)
+
+![img_7.png](img_7.png)

@@ -7,6 +7,7 @@ import com.app_ecom.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -27,12 +28,12 @@ public class ProductService {
     ProductResponse response = new ProductResponse();
     response.setId(saveProduct.getId());
     response.setName(saveProduct.getName());
-    response.setPrice(saveProduct.getPrice());
+    response.setPrice(String.valueOf(saveProduct.getPrice()));
     response.setActive(saveProduct.getActive());
     response.setImageUrl(saveProduct.getImageUrl());
     response.setCategory(saveProduct.getCategory());
     response.setDescription(saveProduct.getDescription());
-    response.setStockQuantity(saveProduct.getStockQuantity());
+    response.setStockQuantity(String.valueOf(saveProduct.getStockQuantity()));
 
     return response;
     }
@@ -40,11 +41,11 @@ public class ProductService {
     private void updateProductFromRequest(Product product, ProductRequest productRequest) {
 
         product.setName(productRequest.getName());
-        product.setPrice(productRequest.getPrice());
+        product.setPrice(new BigDecimal(productRequest.getPrice()));
         product.setImageUrl(productRequest.getImageUrl());
         product.setCategory(productRequest.getCategory());
         product.setDescription(productRequest.getDescription());
-        product.setStockQuantity(productRequest.getStockQuantity());
+        product.setStockQuantity(Integer.valueOf(productRequest.getStockQuantity()));
 
     }
 
