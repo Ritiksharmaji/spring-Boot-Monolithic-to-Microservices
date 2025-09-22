@@ -771,4 +771,15 @@ Response:
 2) ![img_1.png](img_1.png)
 2) ![img_2.png](img_2.png)
 3) ![img_3.png](img_3.png)
-4) 
+
+## ------- working with product --
+1) create model/product
+2) create repository/ProductRepository
+3) create controller/ProductController
+4) create dto/ProductRequest
+5) dto/ProductResponse
+6) service/ProductService
+7) ![img_4.png](img_4.png)
+8) not working on Update Product
+9) ![img_5.png](img_5.png)
+10) 
