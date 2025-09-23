@@ -88,9 +88,8 @@ public List<CartItem> getCart(String userId) {
 }
 
 
-
-
-
-
-
+    public void clearCart(String userId) {
+        userRepository.findById(Long.valueOf(userId))
+                .ifPresent(cartItemRepository::deleteByUser);
+    }
 }
