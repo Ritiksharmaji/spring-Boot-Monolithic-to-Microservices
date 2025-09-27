@@ -1767,3 +1767,8 @@ This will auto-generate a Docker image without writing a `Dockerfile`.
 
 Would you like me to also create a **Docker Compose setup (with DB + multi-stage Dockerfile)** so you can see a real-world example?
 
+1) ![img_100.png](img_100.png)
+2) ![img_101.png](img_101.png)
+3) ![img_102.png](img_102.png)
+4) ![img_103.png](img_103.png)
+5) 
