@@ -1815,3 +1815,4 @@ Used for **troubleshooting or controlling app** (careful in prod 🚨).
 ---
 
 👉 Do you want me to also create a **real-world example** (like monitoring an e-commerce app with `/health`, debugging with `/mappings`, shutting down with `/shutdown`)? That way you’ll see exactly how each group fits in practice.
+# -------- this is spring actuatoor code" ---
