@@ -350,11 +350,13 @@ docker run -d --network none alpine
 4) ![img_65.png](img_65.png)
 5) ![img_66.png](img_66.png)
 6) ![img_67.png](img_67.png)
+7) if your container(image is running then ok if not so first start the docker application then run the command in comamnd line of application : docker start db)
 7) then run one more container
 8) PGadmin for the ```docker run  -d --name pgadmin -e PGADMIN_DEFAULT_EMAI=user@domain.com -e PGADMIN_DEFAULT_PASSWORD=ritik dpage/pgadmin4```
 9) ![img_68.png](img_68.png)
 10) ![img_69.png](img_69.png)
 11) ![img_70.png](img_70.png)
+12) if your container(image is running then ok if not so first start the docker application then run the command in comamnd line of application : docker start pgadmin)
 12) to communicate two container between each other write: ```docker exec -it pgadmin ping db```
 13) ![img_71.png](img_71.png)
 14) to resive it we will use docker network for that we need to create a docker network throw which all container will commnicate to each other.
