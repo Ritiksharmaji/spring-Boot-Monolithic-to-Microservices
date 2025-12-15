@@ -54,9 +54,9 @@ public class UserController {
 
     }
 
-    @PutMapping("/api/user/{id}")
-    public ResponseEntity<User> UpdateUser(@PathVariable Long id){
-
-    }
+//    @PutMapping("/api/user/{id}")
+//    public ResponseEntity<User> UpdateUser(@PathVariable Long id){
+//        return
+//    }
 
 }
