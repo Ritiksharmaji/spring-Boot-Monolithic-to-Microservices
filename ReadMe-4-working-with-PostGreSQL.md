@@ -737,11 +737,127 @@ networks:
 15) ![img_91.png](img_91.png)
 16) ![img_92.png](img_92.png)
 17) ![img_93.png](img_93.png)
-18) ![img_94.png](img_94.png)
+18) ![imgpostgres_94.png](img_94.png)
 19) ![img_95.png](img_95.png)
 20) now we need to crate a database with respect to our database as below image
 21) ![img_96.png](img_96.png)
 22) ![img_97.png](img_97.png)
 23) ![img_98.png](img_98.png)
 24) ![img_99.png](img_99.png)
-25) 
+
+## ======== problem while revising ===============
+1) ![img_104.png](img_104.png)
+2) ![img_105.png](img_105.png)
+3) ![img_106.png](img_106.png)
+4) ![img_107.png](img_107.png)
+5) 
+This is the **same Docker concept again**, just now with **Docker Compose** 👍
+Let me explain clearly and give you the **correct fix**.
+
+---
+
+## 🔴 What is happening?
+
+Your `docker-compose.yml` defines a service with:
+
+```yaml
+container_name: postgres_container
+```
+
+But **a container with this name already exists** (maybe created earlier using `docker run`).
+
+Docker **cannot create two containers with the same name**, so Compose fails.
+
+---
+
+## ⚠️ About the warning (safe to ignore)
+
+```
+the attribute `version` is obsolete
+```
+
+✔ Not an error
+✔ Docker Compose v2 ignores `version:`
+✔ You can safely remove it later
+
+---
+
+## ✅ SOLUTION 1 (Recommended): Stop & remove old container, then run compose
+
+### 1️⃣ Check containers
+
+```bash
+docker ps -a
+```
+
+### 2️⃣ Stop the existing container
+
+```bash
+docker stop postgres_container
+```
+
+### 3️⃣ Remove it
+
+```bash
+docker rm postgres_container
+```
+
+### 4️⃣ Run docker compose again
+
+```bash
+docker compose up -d
+```
+
+✅ This is the **cleanest and correct approach**.
+
+---
+
+## ✅ SOLUTION 2: Let Docker Compose manage everything (Best practice)
+
+If this project will always use Compose, **don’t manually create containers** with `docker run`.
+
+### In `docker-compose.yml`
+
+Remove this line:
+
+```yaml
+container_name: postgres_container
+```
+
+Docker will auto-generate a name like:
+
+```
+ecom-application-postgres-1
+```
+
+Then run:
+
+```bash
+docker compose up -d
+```
+
+✔ Avoids name conflicts forever
+
+---
+
+## 🧠 WHY this keeps happening (important)
+
+You created containers using:
+
+* `docker run`
+* then `docker compose`
+
+Both tried to use the **same container names**.
+
+👉 **Rule:**
+
+* Use **ONLY docker-compose** for this project
+* Or **ONLY docker run**, not both
+
+---
+
+## ✅ Recommended setup for your ecom project
+
+Since you are building a **Spring Boot + Postgres + PgAdmin app**, use **Docker Compose only**.
+
+If you want, paste your `docker-compose.yml` here — I’ll fix it properly (network, volumes, pgadmin, postgres, ports).
